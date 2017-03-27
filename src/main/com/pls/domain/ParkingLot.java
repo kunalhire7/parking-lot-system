@@ -1,6 +1,6 @@
 package com.pls.domain;
 
-class ParkingLot {
+public class ParkingLot {
     private int lotNumber;
     private Car car;
 

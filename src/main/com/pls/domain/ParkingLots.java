@@ -26,7 +26,7 @@ public class ParkingLots {
         if (lots != null) {
             for (int i = 0; i < lots.length; i++) {
                 if (lots[i] == null) {
-                    lots[i] = new ParkingLot(i, car);
+                    lots[i] = new ParkingLot(i + 1, car);
                     size++;
                     return format(PARKED_TEMPLATE, i + 1);
                 }
@@ -50,5 +50,9 @@ public class ParkingLots {
             }
         }
         return PARKING_LOT_NOT_CREATED;
+    }
+
+    public ParkingLot[] getLots() {
+        return lots;
     }
 }
