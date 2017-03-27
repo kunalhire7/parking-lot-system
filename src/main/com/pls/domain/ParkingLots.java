@@ -34,4 +34,21 @@ public class ParkingLots {
         }
         return PARKING_LOT_NOT_CREATED;
     }
+
+    public String leave(int leaveSlot) {
+        if (lots != null) {
+            if (leaveSlot <= lots.length) {
+                if (lots[leaveSlot - 1] != null) {
+                    lots[leaveSlot - 1] = null;
+                    size--;
+                    return format(LEAVE_TEMPLATE, leaveSlot);
+                } else {
+                    return format(NO_CAR_TEMPLATE, leaveSlot);
+                }
+            } else {
+                return LIMIT_EXCEEDS;
+            }
+        }
+        return PARKING_LOT_NOT_CREATED;
+    }
 }
