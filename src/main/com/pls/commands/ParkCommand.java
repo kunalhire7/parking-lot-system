@@ -1,5 +1,6 @@
 package com.pls.commands;
 
+import com.pls.domain.Car;
 import com.pls.domain.ParkingLots;
 
 public class ParkCommand implements ParkingLotSystemCommand {
@@ -12,6 +13,10 @@ public class ParkCommand implements ParkingLotSystemCommand {
 
     @Override
     public String execute(String command) {
-        return null;
+        String[] tokens = command.split(" ");
+        String registrationNumber = tokens[1];
+        String color = tokens[2];
+        Car car = new Car(registrationNumber, color);
+        return parkingLots.park(car);
     }
 }

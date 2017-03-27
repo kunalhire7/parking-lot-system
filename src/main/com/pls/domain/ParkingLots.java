@@ -1,6 +1,7 @@
 package com.pls.domain;
 
-import com.pls.constants.Constants;
+import static com.pls.constants.Constants.*;
+import static java.lang.String.format;
 
 public class ParkingLots {
     private int size;
@@ -10,7 +11,7 @@ public class ParkingLots {
     public String create(int size) {
         this.size = 0;
         lots = new ParkingLot[size];
-        return String.format(Constants.CREATED_TEMPLATE, size);
+        return format(CREATED_TEMPLATE, size);
     }
 
     public int allottedSize() {
@@ -19,5 +20,18 @@ public class ParkingLots {
 
     public int capacity() {
         return lots.length;
+    }
+
+    public String park(Car car) {
+        if (lots != null) {
+            for (int i = 0; i < lots.length; i++) {
+                if (lots[i] == null) {
+                    lots[i] = new ParkingLot(i, car);
+                    size++;
+                    return format(PARKED_TEMPLATE, i + 1);
+                }
+            }
+        }
+        return PARKING_LOT_NOT_CREATED;
     }
 }

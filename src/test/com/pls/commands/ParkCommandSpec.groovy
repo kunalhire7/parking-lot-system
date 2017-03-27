@@ -10,6 +10,7 @@ class ParkCommandSpec extends Specification {
 
     def setup() {
         parkingLots = new ParkingLots()
+        parkingLots.create(6)
         command = new ParkCommand(parkingLots)
     }
 
