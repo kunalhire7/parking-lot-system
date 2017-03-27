@@ -34,6 +34,7 @@ public class ParkingLots {
                     return format(PARKED_TEMPLATE, i + 1);
                 }
             }
+            return PARKING_FULL;
         }
         return PARKING_LOT_NOT_CREATED;
     }

@@ -10,4 +10,5 @@ public final class Constants {
     public static final String LINE_SEPARATOR = System.lineSeparator();
     public static final String TAB = "\t";
     public static final String NOT_FOUND = "Not found";
+    public static final String PARKING_FULL = "Sorry, parking lot is full";
 }

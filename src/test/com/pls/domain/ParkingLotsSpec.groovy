@@ -152,4 +152,21 @@ class ParkingLotsSpec extends Specification {
         result == NOT_FOUND
     }
 
+    def "should return PARKING_FULL when attempted to park the car in full parking lot"() {
+        given:
+        parkingLots.create(2)
+        def car1 = new Car("KA-01-HH-1234", "White")
+        def car2 = new Car("KA-01-HH-1235", "Red")
+        parkingLots.park(car1)
+        parkingLots.park(car2)
+        def car3 = new Car("KA-01-HH-1236", "Black")
+
+        when:
+        def result = parkingLots.park(car3)
+
+        then:
+        result == PARKING_FULL
+        parkingLots.allottedSize() == 2
+    }
+
 }
