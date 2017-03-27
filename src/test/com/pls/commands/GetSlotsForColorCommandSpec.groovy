@@ -4,6 +4,8 @@ import com.pls.domain.Car
 import com.pls.domain.ParkingLots
 import spock.lang.Specification
 
+import static com.pls.constants.Constants.NOT_FOUND
+
 class GetSlotsForColorCommandSpec extends Specification {
 
     ParkingLots parkingLots
@@ -46,7 +48,7 @@ class GetSlotsForColorCommandSpec extends Specification {
         def result = command.execute(commandStr)
 
         then:
-        result == ""
+        result == NOT_FOUND
     }
 
 }

@@ -5,6 +5,8 @@ import com.pls.domain.ParkingLots;
 
 import java.util.List;
 
+import static com.pls.constants.Constants.NOT_FOUND;
+
 public class GetRegistrationNumbersCommand implements ParkingLotSystemCommand {
 
     private ParkingLots parkingLots;
@@ -29,6 +31,6 @@ public class GetRegistrationNumbersCommand implements ParkingLotSystemCommand {
             result = result.substring(0, result.lastIndexOf(","));
         }
 
-        return result;
+        return result.isEmpty() ? NOT_FOUND : result;
     }
 }

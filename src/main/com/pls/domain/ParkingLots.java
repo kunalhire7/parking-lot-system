@@ -70,4 +70,13 @@ public class ParkingLots {
         }
         return lotsWithGivenColor;
     }
+
+    public String getSlotForRegistrationNumber(String registrationNumber) {
+        for(ParkingLot lot : lots) {
+            if(lot != null && lot.getCar().getRegistrationNumber().equals(registrationNumber)) {
+                return "" + lot.getLotNumber();
+            }
+        }
+        return NOT_FOUND;
+    }
 }

@@ -118,4 +118,38 @@ class ParkingLotsSpec extends Specification {
         result == [new ParkingLot(2, car2), new ParkingLot(3, car3)]
     }
 
+    def "should return the slot of the car with given registration number"() {
+        given:
+        parkingLots.create(6)
+        def car1 = new Car("KA-01-BB-0001", "Black")
+        def car2 = new Car("KA-01-BB-0002", "White")
+        def car3 = new Car("KA-01-BB-0003", "White")
+        parkingLots.park(car1)
+        parkingLots.park(car2)
+        parkingLots.park(car3)
+
+        when:
+        def result = parkingLots.getSlotForRegistrationNumber("KA-01-BB-0002")
+
+        then:
+        result == "2"
+    }
+
+    def "should return Not found when car with given registration number is not found in lot"() {
+        given:
+        parkingLots.create(6)
+        def car1 = new Car("KA-01-BB-0001", "Black")
+        def car2 = new Car("KA-01-BB-0002", "White")
+        def car3 = new Car("KA-01-BB-0003", "White")
+        parkingLots.park(car1)
+        parkingLots.park(car2)
+        parkingLots.park(car3)
+
+        when:
+        def result = parkingLots.getSlotForRegistrationNumber("KA-01-BB-0004")
+
+        then:
+        result == NOT_FOUND
+    }
+
 }

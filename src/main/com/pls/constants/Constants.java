@@ -9,4 +9,5 @@ public final class Constants {
     public static final String LIMIT_EXCEEDS = "Invalid command - cannot leave the car at slot greater than parking lot capacity";
     public static final String LINE_SEPARATOR = System.lineSeparator();
     public static final String TAB = "\t";
+    public static final String NOT_FOUND = "Not found";
 }
