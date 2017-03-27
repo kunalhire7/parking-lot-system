@@ -1,15 +1,15 @@
 package com.pls.domain;
 
 public class Car {
-    private long registrationNumber;
+    private String registrationNumber;
     private String color;
 
-    public Car(long registrationNumber, String color) {
+    public Car(String registrationNumber, String color) {
         this.registrationNumber = registrationNumber;
         this.color = color;
     }
 
-    public long getRegistrationNumber() {
+    public String getRegistrationNumber() {
         return registrationNumber;
     }
 
