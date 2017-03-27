@@ -112,10 +112,10 @@ class ParkingLotsSpec extends Specification {
         parkingLots.park(car3)
 
         when:
-        def result = parkingLots.getCarsWithColor("White")
+        def result = parkingLots.getLotsWithColor("White")
 
         then:
-        result == [car2, car3]
+        result == [new ParkingLot(2, car2), new ParkingLot(3, car3)]
     }
 
 }

@@ -59,16 +59,15 @@ public class ParkingLots {
         return lots;
     }
 
-    public List<Car> getCarsWithColor(String color) {
-        List<Car> carsWithGivenColor = new ArrayList<>();
+    public List<ParkingLot> getLotsWithColor(String color) {
+        List<ParkingLot> lotsWithGivenColor = new ArrayList<>();
         for (ParkingLot lot : lots) {
             if (lot != null) {
-                Car car = lot.getCar();
-                if (car.getColor().equals(color)) {
-                    carsWithGivenColor.add(car);
+                if (lot.getCar().getColor().equals(color)) {
+                    lotsWithGivenColor.add(lot);
                 }
             }
         }
-        return carsWithGivenColor;
+        return lotsWithGivenColor;
     }
 }

@@ -5,22 +5,21 @@ import com.pls.domain.ParkingLots;
 
 import java.util.List;
 
-public class GetRegistrationNumbersCommand implements ParkingLotSystemCommand {
+public class GetSlotsForColorCommand implements ParkingLotSystemCommand {
 
     private ParkingLots parkingLots;
 
-    public GetRegistrationNumbersCommand(ParkingLots parkingLots) {
+    public GetSlotsForColorCommand(ParkingLots parkingLots) {
         this.parkingLots = parkingLots;
     }
 
     @Override
     public String execute(String command) {
         String color = command.split(" ")[1];
-
         List<ParkingLot> lotsWithColor = parkingLots.getLotsWithColor(color);
         StringBuilder sb = new StringBuilder();
         for(ParkingLot lot : lotsWithColor) {
-            sb.append(lot.getCar().getRegistrationNumber()).append(", ");
+            sb.append(lot.getLotNumber()).append(", ");
         }
 
         String result = sb.toString();
