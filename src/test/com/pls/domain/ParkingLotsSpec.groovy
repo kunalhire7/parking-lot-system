@@ -101,4 +101,21 @@ class ParkingLotsSpec extends Specification {
         result == PARKING_LOT_NOT_CREATED
     }
 
+    def "should fetch all cars with given color"() {
+        given:
+        parkingLots.create(6)
+        def car1 = new Car("KA-01-BB-0001", "Black")
+        def car2 = new Car("KA-01-BB-0002", "White")
+        def car3 = new Car("KA-01-BB-0003", "White")
+        parkingLots.park(car1)
+        parkingLots.park(car2)
+        parkingLots.park(car3)
+
+        when:
+        def result = parkingLots.getCarsWithColor("White")
+
+        then:
+        result == [car2, car3]
+    }
+
 }

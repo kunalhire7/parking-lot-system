@@ -1,5 +1,8 @@
 package com.pls.domain;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import static com.pls.constants.Constants.*;
 import static java.lang.String.format;
 
@@ -54,5 +57,18 @@ public class ParkingLots {
 
     public ParkingLot[] getLots() {
         return lots;
+    }
+
+    public List<Car> getCarsWithColor(String color) {
+        List<Car> carsWithGivenColor = new ArrayList<>();
+        for (ParkingLot lot : lots) {
+            if (lot != null) {
+                Car car = lot.getCar();
+                if (car.getColor().equals(color)) {
+                    carsWithGivenColor.add(car);
+                }
+            }
+        }
+        return carsWithGivenColor;
     }
 }
