@@ -14,7 +14,6 @@ class GetRegistrationNumbersCommandSpec extends Specification {
     def setup() {
         parkingLots = new ParkingLots()
         parkingLots.create(6)
-        command = new GetRegistrationNumbersCommand(parkingLots)
     }
 
     def "should execute the command to get the registration numbers of all cars of the given color"() {
@@ -27,9 +26,10 @@ class GetRegistrationNumbersCommandSpec extends Specification {
         parkingLots.park(car2)
         parkingLots.park(car3)
         def commandStr = "registration_numbers_for_cars_with_colour White"
+        command = new GetRegistrationNumbersCommand(parkingLots, commandStr)
 
         when:
-        def result = command.execute(commandStr)
+        def result = command.execute()
 
         then:
         result == "KA-01-BB-0002, KA-01-BB-0003"
@@ -45,9 +45,10 @@ class GetRegistrationNumbersCommandSpec extends Specification {
         parkingLots.park(car2)
         parkingLots.park(car3)
         def commandStr = "registration_numbers_for_cars_with_colour Red"
+        command = new GetRegistrationNumbersCommand(parkingLots, commandStr)
 
         when:
-        def result = command.execute(commandStr)
+        def result = command.execute()
 
         then:
         result == NOT_FOUND

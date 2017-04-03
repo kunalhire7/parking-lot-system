@@ -17,7 +17,7 @@ public class FileProcessor {
             StringBuilder sb = new StringBuilder();
             while (scanner.hasNext()) {
                 String commandStr = scanner.nextLine();
-                sb.append(getCommand(commandStr, parkingLots).execute(commandStr)).append(LINE_SEPARATOR);
+                sb.append(getCommand(commandStr, parkingLots).execute()).append(LINE_SEPARATOR);
             }
             System.out.println(sb.toString());
         } catch (FileNotFoundException e) {

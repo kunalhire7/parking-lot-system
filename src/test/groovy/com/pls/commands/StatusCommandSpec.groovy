@@ -12,7 +12,6 @@ class StatusCommandSpec extends Specification {
     def setup() {
         parkingLots = new ParkingLots()
         parkingLots.create(6)
-        command = new StatusCommand(parkingLots)
     }
 
     def "should execute the command to fetch the status"() {
@@ -25,9 +24,10 @@ class StatusCommandSpec extends Specification {
         parkingLots.park(car2)
         parkingLots.park(car3)
         def commandStr = "status"
+        command = new StatusCommand(parkingLots, commandStr)
 
         when:
-        def result = command.execute(commandStr)
+        def result = command.execute()
 
         then:
         result == """Slot No.\tRegistration No\tColour\n1\tKA-01-BB-0001\tBlack\n2\tKA-01-BB-0002\tWhite\n3\tKA-01-BB-0003\tRed\n"""

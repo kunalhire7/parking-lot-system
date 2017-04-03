@@ -10,15 +10,14 @@ class CreateParkingLotCommandSpec extends Specification {
 
     def setup() {
         parkingLots = new ParkingLots()
-        command = new CreateParkingLotCommand(parkingLots)
+        String commandStr = "create_parking_lot 6"
+        command = new CreateParkingLotCommand(parkingLots, commandStr)
     }
 
     def "should invoke the command to create the parking lot"() {
-        given:
-        def commandStr = "create_parking_lot 6"
 
         when:
-        def result = command.execute(commandStr)
+        def result = command.execute()
 
         then:
         result == "Created a parking lot with 6 slots"

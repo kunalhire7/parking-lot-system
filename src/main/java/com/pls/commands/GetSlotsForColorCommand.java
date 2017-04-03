@@ -10,14 +10,16 @@ import static com.pls.constants.Constants.NOT_FOUND;
 public class GetSlotsForColorCommand implements ParkingLotSystemCommand {
 
     private ParkingLots parkingLots;
+    private String commandStr;
 
-    public GetSlotsForColorCommand(ParkingLots parkingLots) {
+    public GetSlotsForColorCommand(ParkingLots parkingLots, String commandStr) {
         this.parkingLots = parkingLots;
+        this.commandStr = commandStr;
     }
 
     @Override
-    public String execute(String command) {
-        String color = command.split(" ")[1];
+    public String execute() {
+        String color = commandStr.split(" ")[1];
         List<ParkingLot> lotsWithColor = parkingLots.getLotsWithColor(color);
         StringBuilder sb = new StringBuilder();
         for(ParkingLot lot : lotsWithColor) {

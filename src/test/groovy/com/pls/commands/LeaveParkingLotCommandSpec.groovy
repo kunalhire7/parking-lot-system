@@ -15,7 +15,6 @@ class LeaveParkingLotCommandSpec extends Specification {
     def setup() {
         parkingLots = new ParkingLots()
         parkingLots.create(6)
-        command = new LeaveParkingLotCommand(parkingLots)
     }
 
     def "should execute the command to driveway the given car"() {
@@ -28,9 +27,10 @@ class LeaveParkingLotCommandSpec extends Specification {
         parkingLots.park(car2)
         parkingLots.park(car3)
         def commandStr = "leave " + leaveSlot
+        command = new LeaveParkingLotCommand(parkingLots, commandStr)
 
         when:
-        def result = command.execute(commandStr)
+        def result = command.execute()
 
         then:
         result == format(LEAVE_TEMPLATE, leaveSlot)

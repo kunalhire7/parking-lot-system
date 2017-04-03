@@ -17,19 +17,19 @@ public class ParkingLotSystemCommandFactory {
         String currentCommand = commandStr.split(" ")[0];
         switch (currentCommand) {
             case CREATE_COMMAND:
-                return new CreateParkingLotCommand(parkingLots);
+                return new CreateParkingLotCommand(parkingLots, commandStr);
             case PARK_COMMAND:
-                return new ParkCommand(parkingLots);
+                return new ParkCommand(parkingLots, commandStr);
             case LEAVE_COMMAND:
-                return new LeaveParkingLotCommand(parkingLots);
+                return new LeaveParkingLotCommand(parkingLots, commandStr);
             case STATUS_COMMAND:
-                return new StatusCommand(parkingLots);
+                return new StatusCommand(parkingLots, commandStr);
             case GET_REGISTRATION_NUMBERS_COMMAND:
-                return new GetRegistrationNumbersCommand(parkingLots);
+                return new GetRegistrationNumbersCommand(parkingLots, commandStr);
             case GET_SLOT_NUMBERS_FOR_COLOR_COMMAND:
-                return new GetSlotsForColorCommand(parkingLots);
+                return new GetSlotsForColorCommand(parkingLots, commandStr);
             case GET_SLOT_NUMBER_FOR_REGISTRATION_NO_COMMAND:
-                return new GetSlotForRegistrationNumberCommand(parkingLots);
+                return new GetSlotForRegistrationNumberCommand(parkingLots, commandStr);
             default:
                 throw new IllegalStateException("The command format is not correct.");
         }

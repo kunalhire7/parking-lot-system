@@ -12,7 +12,6 @@ class GetSlotForRegistrationNumberCommandSpec extends Specification {
     def setup() {
         parkingLots = new ParkingLots()
         parkingLots.create(6)
-        command = new GetSlotForRegistrationNumberCommand(parkingLots)
     }
 
     def "should execute the command to get the slot number for given registration number car"() {
@@ -24,9 +23,10 @@ class GetSlotForRegistrationNumberCommandSpec extends Specification {
         parkingLots.park(car2)
         parkingLots.park(car3)
         def commandStr = "slot_number_for_registration_number KA-01-BB-0001"
+        command = new GetSlotForRegistrationNumberCommand(parkingLots, commandStr)
 
         when:
-        def result = command.execute(commandStr)
+        def result = command.execute()
 
         then:
         result == "1"

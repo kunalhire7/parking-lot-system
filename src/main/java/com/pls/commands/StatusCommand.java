@@ -9,13 +9,15 @@ import static com.pls.constants.Constants.TAB;
 public class StatusCommand implements ParkingLotSystemCommand {
 
     private ParkingLots parkingLots;
+    private String commandStr;
 
-    public StatusCommand(ParkingLots parkingLots) {
+    public StatusCommand(ParkingLots parkingLots, String commandStr) {
         this.parkingLots = parkingLots;
+        this.commandStr = commandStr;
     }
 
     @Override
-    public String execute(String command) {
+    public String execute() {
         ParkingLot[] lots = parkingLots.getLots();
         StringBuilder sb = new StringBuilder();
         sb.append("Slot No.").append(TAB).append("Registration No").append(TAB).append("Colour");

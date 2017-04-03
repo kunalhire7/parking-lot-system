@@ -13,7 +13,7 @@ public class InteractiveCommandProcessor {
             ParkingLots parkingLots = new ParkingLots();
             while (scanner.hasNext()) {
                 String commandStr = scanner.nextLine();
-                System.out.println(getCommand(commandStr, parkingLots).execute(commandStr));
+                System.out.println(getCommand(commandStr, parkingLots).execute());
             }
         }
     }

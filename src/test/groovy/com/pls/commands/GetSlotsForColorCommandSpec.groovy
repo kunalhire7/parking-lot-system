@@ -14,7 +14,6 @@ class GetSlotsForColorCommandSpec extends Specification {
     def setup() {
         parkingLots = new ParkingLots()
         parkingLots.create(6)
-        command = new GetSlotsForColorCommand(parkingLots)
     }
 
     def "should execute the command to get all the slots for given color"() {
@@ -26,9 +25,10 @@ class GetSlotsForColorCommandSpec extends Specification {
         parkingLots.park(car2)
         parkingLots.park(car3)
         def commandStr = "slot_numbers_for_cars_with_colour White"
+        command = new GetSlotsForColorCommand(parkingLots, commandStr)
 
         when:
-        def result = command.execute(commandStr)
+        def result = command.execute()
 
         then:
         result == "2, 3"
@@ -43,9 +43,10 @@ class GetSlotsForColorCommandSpec extends Specification {
         parkingLots.park(car2)
         parkingLots.park(car3)
         def commandStr = "slot_numbers_for_cars_with_colour Red"
+        command = new GetSlotsForColorCommand(parkingLots, commandStr)
 
         when:
-        def result = command.execute(commandStr)
+        def result = command.execute()
 
         then:
         result == NOT_FOUND
